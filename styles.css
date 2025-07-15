@@ -1,75 +1,272 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8f0ff;
-  color: #333;
-  margin: 0;
-  padding: 2rem;
+const mallaData = {
+  "1° AÑO": [
+    {
+      "nombre": "Lengua y Escritura Académica",
+      "id": "lengua-y-escritura-academica",
+      "requisitos": []
+    },
+    {
+      "nombre": "Psicología Educacional",
+      "id": "psicologia-educacional",
+      "requisitos": []
+    },
+    {
+      "nombre": "Pedagogía",
+      "id": "pedagogia",
+      "requisitos": []
+    },
+    {
+      "nombre": "Didáctica General",
+      "id": "didactica-general",
+      "requisitos": []
+    },
+    {
+      "nombre": "Educación Digital",
+      "id": "educacion-digital",
+      "requisitos": []
+    },
+    {
+      "nombre": "Lengua Inglesa e Interculturalidad I",
+      "id": "lengua-inglesa-e-interculturalidad-i",
+      "requisitos": []
+    },
+    {
+      "nombre": "Fonética, Fonología y Dicción Inglesa I",
+      "id": "fonetica-fonologia-y-diccion-inglesa-i",
+      "requisitos": []
+    },
+    {
+      "nombre": "Gramática Inglesa I",
+      "id": "gramatica-inglesa-i",
+      "requisitos": []
+    },
+    {
+      "nombre": "Práctica Profesional Docente I",
+      "id": "practica-profesional-docente-i",
+      "requisitos": []
+    }
+  ],
+  "2° AÑO": [
+    {
+      "nombre": "Historia y Política de la Educación Argentina",
+      "id": "historia-y-politica-de-la-educacion-argentina",
+      "requisitos": ["pedagogia"]
+    },
+    {
+      "nombre": "Educación Sexual Integral",
+      "id": "educacion-sexual-integral",
+      "requisitos": []
+    },
+    {
+      "nombre": "Sujetos del Aprendizaje",
+      "id": "sujetos-del-aprendizaje",
+      "requisitos": ["psicologia-educacional", "lengua-inglesa-e-interculturalidad-i", "fonetica-fonologia-y-diccion-inglesa-i", "gramatica-inglesa-i"]
+    },
+    {
+      "nombre": "Didáctica de la Lengua Inglesa para los Niveles Inicial y Primario",
+      "id": "didactica-de-la-lengua-inglesa-para-los-niveles-inicial-y-primario",
+      "requisitos": ["psicologia-educacional", "pedagogia", "didactica-general", "lengua-inglesa-e-interculturalidad-i", "fonetica-fonologia-y-diccion-inglesa-i", "gramatica-inglesa-i", "practica-profesional-docente-i"]
+    },
+    {
+      "nombre": "Introducción a la Lingüística",
+      "id": "introduccion-a-la-linguistica",
+      "requisitos": ["lengua-inglesa-e-interculturalidad-i", "fonetica-fonologia-y-diccion-inglesa-i", "gramatica-inglesa-i"]
+    },
+    {
+      "nombre": "Lengua Inglesa e Interculturalidad II",
+      "id": "lengua-inglesa-e-interculturalidad-ii",
+      "requisitos": ["lengua-inglesa-e-interculturalidad-i"]
+    },
+    {
+      "nombre": "Fonética, Fonología y Dicción Inglesa II",
+      "id": "fonetica-fonologia-y-diccion-inglesa-ii",
+      "requisitos": ["fonetica-fonologia-y-diccion-inglesa-i"]
+    },
+    {
+      "nombre": "Gramática Inglesa II",
+      "id": "gramatica-inglesa-ii",
+      "requisitos": ["gramatica-inglesa-i"]
+    },
+    {
+      "nombre": "Práctica Profesional Docente II",
+      "id": "practica-profesional-docente-ii",
+      "requisitos": ["practica-profesional-docente-i"]
+    }
+  ],
+  "3° AÑO": [
+    {
+      "nombre": "Investigación Educativa",
+      "id": "investigacion-educativa",
+      "requisitos": []
+    },
+    {
+      "nombre": "Estudio Literario y Cultura en Lengua Inglesa I",
+      "id": "estudio-literario-y-cultura-en-lengua-inglesa-i",
+      "requisitos": ["lengua-inglesa-e-interculturalidad-ii", "fonetica-fonologia-y-diccion-inglesa-ii", "gramatica-inglesa-ii", "practica-profesional-docente-ii"]
+    },
+    {
+      "nombre": "Didáctica de la Lengua Inglesa para el Nivel Secundario",
+      "id": "didactica-de-la-lengua-inglesa-para-el-nivel-secundario",
+      "requisitos": ["didactica-de-la-lengua-inglesa-para-los-niveles-inicial-y-primario", "lengua-inglesa-e-interculturalidad-ii", "fonetica-fonologia-y-diccion-inglesa-ii", "gramatica-inglesa-ii", "practica-profesional-docente-ii"]
+    },
+    {
+      "nombre": "Lengua Inglesa e Interculturalidad III",
+      "id": "lengua-inglesa-e-interculturalidad-iii",
+      "requisitos": ["lengua-inglesa-e-interculturalidad-ii", "fonetica-fonologia-y-diccion-inglesa-ii", "gramatica-inglesa-ii", "practica-profesional-docente-ii"]
+    },
+    {
+      "nombre": "Fonética, Fonología y Dicción Inglesa III",
+      "id": "fonetica-fonologia-y-diccion-inglesa-iii",
+      "requisitos": ["fonetica-fonologia-y-diccion-inglesa-ii", "lengua-inglesa-e-interculturalidad-ii", "gramatica-inglesa-ii", "practica-profesional-docente-ii"]
+    },
+    {
+      "nombre": "Práctica Profesional Docente III y Residencia",
+      "id": "practica-profesional-docente-iii-y-residencia",
+      "requisitos": ["historia-y-politica-de-la-educacion-argentina", "educacion-sexual-integral", "sujetos-del-aprendizaje", "didactica-de-la-lengua-inglesa-para-los-niveles-inicial-y-primario", "introduccion-a-la-linguistica", "lengua-inglesa-e-interculturalidad-ii", "fonetica-fonologia-y-diccion-inglesa-ii", "gramatica-inglesa-ii", "practica-profesional-docente-ii"]
+    },
+    {
+      "nombre": "Sociología de la Educación",
+      "id": "sociologia-de-la-educacion",
+      "requisitos": ["historia-y-politica-de-la-educacion-argentina"]
+    },
+    {
+      "nombre": "Psicolingüística",
+      "id": "psicolinguistica",
+      "requisitos": ["introduccion-a-la-linguistica"]
+    }
+  ],
+  "4° AÑO": [
+    {
+      "nombre": "Filosofía de la Educación",
+      "id": "filosofia-de-la-educacion",
+      "requisitos": ["sociologia-de-la-educacion"]
+    },
+    {
+      "nombre": "Estudio Literario y Cultura en Lengua Inglesa II",
+      "id": "estudio-literario-y-cultura-en-lengua-inglesa-ii",
+      "requisitos": ["estudio-literario-y-cultura-en-lengua-inglesa-i"]
+    },
+    {
+      "nombre": "Investigación en Enseñanza del Inglés",
+      "id": "investigacion-en-ensenanza-del-ingles",
+      "requisitos": ["investigacion-educativa", "estudio-literario-y-cultura-en-lengua-inglesa-i", "lengua-inglesa-e-interculturalidad-iii", "fonetica-fonologia-y-diccion-inglesa-iii"]
+    },
+    {
+      "nombre": "Lengua Inglesa y Análisis del Discurso",
+      "id": "lengua-inglesa-y-analisis-del-discurso",
+      "requisitos": ["lengua-inglesa-e-interculturalidad-iii"]
+    },
+    {
+      "nombre": "Práctica Profesional Docente IV y Residencia",
+      "id": "practica-profesional-docente-iv-y-residencia",
+      "requisitos": ["practica-profesional-docente-iii-y-residencia", "estudio-literario-y-cultura-en-lengua-inglesa-i", "didactica-de-la-lengua-inglesa-para-el-nivel-secundario", "lengua-inglesa-e-interculturalidad-iii", "fonetica-fonologia-y-diccion-inglesa-iii", "psicolinguistica", "sociologia-de-la-educacion"]
+    },
+    {
+      "nombre": "UDI I del CFG",
+      "id": "udi-i-del-cfg",
+      "requisitos": []
+    },
+    {
+      "nombre": "Sociolingüística",
+      "id": "sociolinguistica",
+      "requisitos": ["psicolinguistica", "lengua-inglesa-e-interculturalidad-iii"]
+    },
+    {
+      "nombre": "UDI II del CFG",
+      "id": "udi-ii-del-cfg",
+      "requisitos": []
+    }
+  ]
+};
+
+const malla = document.getElementById("malla");
+
+function crearRamo(ramo) {
+  const card = document.createElement("div");
+  card.className = "ramo";
+  card.id = ramo.id;
+
+  const h3 = document.createElement("h3");
+  h3.textContent = ramo.nombre;
+
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.disabled = true;
+
+  const label = document.createElement("label");
+  label.appendChild(checkbox);
+  label.append(" Aprobado");
+
+  card.appendChild(h3);
+  card.appendChild(label);
+
+  checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+      desbloquearDependientes(ramo.id);
+    } else {
+      bloquearDependientes(ramo.id);
+    }
+  });
+
+  return card;
 }
 
-h1 {
-  text-align: center;
-  color: #7e57c2;
-  margin-bottom: 2rem;
+function desbloquearDependientes(idAprobado) {
+  Object.values(mallaData).flat().forEach((ramo) => {
+    if (ramo.requisitos.includes(idAprobado)) {
+      const requisitosCumplidos = ramo.requisitos.every((req) => {
+        const cb = document.querySelector(`#${req} input`);
+        return cb?.checked;
+      });
+      if (requisitosCumplidos) {
+        const dom = document.getElementById(ramo.id);
+        dom.classList.remove("locked");
+        dom.classList.add("active");
+        dom.querySelector("input").disabled = false;
+        desbloquearDependientes(ramo.id);
+      }
+    }
+  });
 }
 
-.grid-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 2rem;
+function bloquearDependientes(idDesbloqueado) {
+  Object.values(mallaData).flat().forEach((ramo) => {
+    if (ramo.requisitos.includes(idDesbloqueado)) {
+      const dom = document.getElementById(ramo.id);
+      dom.classList.remove("active");
+      dom.classList.add("locked");
+      const cb = dom.querySelector("input");
+      cb.checked = false;
+      cb.disabled = true;
+      bloquearDependientes(ramo.id);
+    }
+  });
 }
 
-.year-column {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  min-width: 300px;
+function inicializar() {
+  Object.entries(mallaData).forEach(([anio, ramos]) => {
+    const yearCol = document.createElement("div");
+    yearCol.className = "year-column";
+
+    const title = document.createElement("div");
+    title.className = "year-title";
+    title.textContent = anio;
+    yearCol.appendChild(title);
+
+    ramos.forEach((ramo) => {
+      const card = crearRamo(ramo);
+      // Si no tiene requisitos se desbloquea y habilita checkbox
+      if (ramo.requisitos.length === 0) {
+        card.classList.add("active");
+        card.querySelector("input").disabled = false;
+      } else {
+        card.classList.add("locked");
+      }
+      yearCol.appendChild(card);
+    });
+
+    malla.appendChild(yearCol);
+  });
 }
 
-.year-title {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: #4a148c;
-  text-align: center;
-}
-
-.ramo {
-  background-color: #e1f7e3;
-  border: 2px solid #b2dfdb;
-  border-radius: 12px;
-  padding: 1rem;
-  opacity: 0.5;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  user-select: none;
-}
-
-.ramo.active {
-  opacity: 1;
-  transform: scale(1.02);
-  cursor: pointer;
-}
-
-.ramo.locked {
-  background-color: #f0e4ff;
-  border: 2px dashed #d1c4e9;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.ramo h3 {
-  margin-top: 0;
-  color: #7e57c2;
-  font-size: 1rem;
-}
-
-.ramo input[type="checkbox"] {
-  transform: scale(1.3);
-  margin-right: 0.5rem;
-}
-
-.ramo label {
-  font-weight: bold;
-  cursor: pointer;
-}
+inicializar();
